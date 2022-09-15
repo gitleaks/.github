@@ -1,0 +1,22 @@
+# Copyright © 2022 Gitleaks LLC - All Rights Reserved.
+# You may use this code under the terms of the GITLEAKS-ACTION END-USER LICENSE AGREEMENT,
+# which can be found here: https://github.com/gitleaks/gitleaks-action/blob/4036f303133f36c5017e03c31446353f31572e9e/COMMERCIAL-LICENSE.txt
+
+name: gitleaks-action
+on: [pull_request, push, workflow_dispatch]
+jobs:
+  scan:
+    name: gitleaks-action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This variable is automatically assigned by GitHub when any action gets kicked off.
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE}} # Only required for Organizations, not personal accounts.
+#          GITLEAKS_NOTIFY_USER_LIST: @octocat,@johndoe # (optional) A list of GitHub accounts that should be alerted when gitleaks-action detects a leak
+#          GITLEAKS_ENABLE_COMMENTS: true # (optional) Boolean value that turns on or off PR commenting. Default value is true.
+#          GITLEAKS_CONFIG: /config/gitleaks.toml # (optional) Path to a gitleaks configuration file.
+#          GITLEAKS_ENABLE_UPLOAD_ARTIFACT: true # (optional) Boolean value that turns on or off uploading a sarif artifact when gitleaks detects secrets. Defaults to true.
