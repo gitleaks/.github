@@ -13,6 +13,3 @@ You can use Gitleaks as a:
 - 🎬 [github-action](https://github.com/gitleaks/gitleaks-action)
 - 🎣 [precommit-hook](https://github.com/gitleaks/gitleaks#pre-commit)
 - 🔎 [scanner in any ci/cd](https://github.com/gitleaks/gitleaks#docker)
-
-Contact: 
-- `zach @ gitleaks . io`
